@@ -1,0 +1,21 @@
+table {
+    display: grid;
+    padding: 1em;
+}
+
+table tbody {
+    display: grid;
+    gap: 10px;
+}
+tbody tr {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+table td {
+    cursor: pointer;
+}
+
+/* everything in life is experience. */
+/* never run from practice and experience */
