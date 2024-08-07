@@ -2,21 +2,33 @@ import "../css/Keys.css";
 
 // Key ds...
 let keys = [
-  ["cancel", "(", ")", "mod"],
+  ["cancel", "(", ")", "%"],
   ["7", "8", "9", "/"],
   ["4", "5", "6", "*"],
   ["1", "2", "3", "-"],
   ["0", ".", "=", "+"],
 ];
 
-function Keys({ value, setValue }) {
+function Keys({ value, setValue, history, setHistory, calculate }) {
   function handleClick(key, e) {
     if (key != "cancel" && key != "=") {
-        setValue(value + key);
+      setValue(value + key);
     } else if (key == "cancel") {
-        setValue(value.slice(0, value.length - 1));
-    } else {
-        // finding the answer and updating appropriately...
+      setValue(value.slice(0, value.length - 1));
+    } else if (key == "=") {
+      let val = calculate(value).value;
+      setValue(String(val));
+
+      let newHist = history.concat([
+        {
+          expr: value,
+          answer: val,
+        },
+      ]);
+
+      setHistory(newHist);
+      // set it to local storage... additional
+      localStorage.setItem("history", JSON.stringify(newHist));
     }
   }
 

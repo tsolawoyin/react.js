@@ -2,6 +2,23 @@
     height: 50vh;
     width: 100%;
     /* border: 1px solid; */
+    display: grid;
+    align-items: end;
+    padding-bottom: 1em;
+}
+
+.history {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 1em;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
 }
 
 /* we work on the styling later... */
