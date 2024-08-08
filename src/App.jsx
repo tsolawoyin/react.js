@@ -74,8 +74,10 @@ function App() {
           setManageHistory={setManageHistory}
         />
       ) : null}
-      <p>
-        Made with <a href="https://react.dev/">react</a> and <a href="https://bulma.io/">bulma</a>
+      <p className="is-size-7">
+        Made with <a href="https://react.dev/">react</a> and <a href="https://bulma.io/">bulma</a>.
+        <a href="https://github.com/tsolawoyin/react-projects/tree/calculator"> Github</a>.
+        <a href="https://github.com/tsolawoyin"> tsolawoyin</a>
       </p>
     </div>
   );
