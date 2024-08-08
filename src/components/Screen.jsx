@@ -10,6 +10,10 @@ function History({ expr, answer }) {
   );
 }
 
+
+// the thing is straight forward.
+// fetch from local storage and display.
+
 function Screen({ history }) {
   return (
     <div id="screen">

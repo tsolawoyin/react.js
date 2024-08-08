@@ -14,7 +14,9 @@ function calculate(expr) {
 
 function App() {
   let [value, setValue] = useState("");
-  let [history, setHistory] = useState([]);
+  let [history, setHistory] = useState(
+    JSON.parse(localStorage.getItem("history")) || []
+  );
 
   function handleKeyDown(e) {
     if (e.key == "Enter" || e.keyCode === 13) {
@@ -30,7 +32,7 @@ function App() {
               expr: exprObj.exprString,
               answer: val,
             },
-          ])
+          ]);
 
           setHistory(newHist);
           // set it to local storage... additional
@@ -58,8 +60,11 @@ function App() {
   );
 }
 
-// so there is something wrong with the way it was called before... hmll
-
 export default App;
 
 // as a bonus, let's set it to local storage
+
+// let's work on undo and history to learn about the stuff
+// and learn how to work with local storage...
+// local storage problem solved.
+// the next thing is id...
