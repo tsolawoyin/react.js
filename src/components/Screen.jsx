@@ -1,5 +1,4 @@
 import "../css/Screen.css";
-import Close from "../assets/close.svg";
 
 function History({ expr, answer, setValue, id, from, history, setHistory }) {
   function handleClick(e) {
