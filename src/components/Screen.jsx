@@ -36,7 +36,7 @@ function History({ expr, answer, setValue, id, from, history, setHistory }) {
         {answer}
       </p>
       {from == "manage-history" ? (
-        <span className="icon has-text-danger" style={{ justifySelf: "right" }} >
+        <span className="icon has-text-danger" style={{ justifySelf: "right" }}>
           <i className="fa-solid fa-xmark" id={id}></i>
         </span>
       ) : null}

@@ -55,7 +55,7 @@ function App() {
       <p
         className="is-size-7"
         style={{ textAlign: "right", cursor: "pointer" }}
-        onClick={e => setManageHistory(true)}
+        onClick={(e) => setManageHistory(true)}
       >
         manage history
       </p>
@@ -74,15 +74,11 @@ function App() {
           setManageHistory={setManageHistory}
         />
       ) : null}
+      <p>
+        Made with <a href="https://react.dev/">react</a> and <a href="https://bulma.io/">bulma</a>
+      </p>
     </div>
   );
 }
 
 export default App;
-
-// as a bonus, let's set it to local storage
-
-// let's work on undo and history to learn about the stuff
-// and learn how to work with local storage...
-// local storage problem solved.
-// the next thing is id...
