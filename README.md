@@ -8,6 +8,4 @@ The main branch consist of only the templates while other branch contains code f
 
 ### Completed projects
 
--
--
--
+- [Snicket Calculator](https://github.com/tsolawoyin/react-projects/tree/calculator)
