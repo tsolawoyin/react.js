@@ -2,15 +2,21 @@ import { useState } from "react";
 import "../css/Header.css";
 
 function Header () {
-    let [lightMode, setLightMode] = useState("Dark");
+    let [lightMode, setLightMode] = useState(localStorage.getItem("lightmode") || "Dark");
+
+    if (lightMode == "Dark") {
+        document.documentElement.setAttribute("data-theme", "dark")
+    } else {
+        document.documentElement.setAttribute("data-theme", "light")
+    }
 
     function handleClick () {
         if (lightMode == "Dark") {
-            document.documentElement.setAttribute("data-theme", "light")
             setLightMode("Light");
+            localStorage.setItem("lightmode", "Light")
         } else {
-            document.documentElement.setAttribute("data-theme", "dark")
             setLightMode("Dark");
+            localStorage.setItem("lightmode", "Dark")
         }
     }
 
