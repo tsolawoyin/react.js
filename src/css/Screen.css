@@ -4,12 +4,13 @@
     /* border: 1px solid; */
     display: grid;
     align-items: end;
-    padding-bottom: 1em;
+    padding: 1em;
+    overflow-y: auto;
 }
 
 .history {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
     margin-top: 1em;
 }
 

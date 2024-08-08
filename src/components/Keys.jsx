@@ -1,4 +1,5 @@
 import "../css/Keys.css";
+import { v4 as uuidv4 } from "uuid";
 
 // Key ds...
 let keys = [
@@ -23,6 +24,7 @@ function Keys({ value, setValue, history, setHistory, calculate }) {
         {
           expr: value,
           answer: val,
+          id: uuidv4()
         },
       ]);
 

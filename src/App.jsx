@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Expression from "./Evaluator";
+import { v4 as uuidv4 } from "uuid";
 
 import Screen from "./components/Screen";
 import Keys from "./components/Keys";
@@ -17,6 +18,7 @@ function App() {
   let [history, setHistory] = useState(
     JSON.parse(localStorage.getItem("history")) || []
   );
+  let [manageHistory, setManageHistory] = useState(false);
 
   function handleKeyDown(e) {
     if (e.key == "Enter" || e.keyCode === 13) {
@@ -31,6 +33,7 @@ function App() {
             {
               expr: exprObj.exprString,
               answer: val,
+              id: uuidv4(),
             },
           ]);
 
@@ -47,8 +50,15 @@ function App() {
   return (
     <div onKeyDown={handleKeyDown}>
       <Header />
-      <Screen history={history} />
+      <Screen history={history} id="screen" setValue={setValue} />
       <Input value={value} setValue={setValue} />
+      <p
+        className="is-size-7"
+        style={{ textAlign: "right", cursor: "pointer" }}
+        onClick={e => setManageHistory(true)}
+      >
+        manage history
+      </p>
       <Keys
         value={value}
         setValue={setValue}
@@ -56,6 +66,14 @@ function App() {
         setHistory={setHistory}
         calculate={calculate}
       />
+      {manageHistory ? (
+        <Screen
+          history={history}
+          setHistory={setHistory}
+          id="manage-history"
+          setManageHistory={setManageHistory}
+        />
+      ) : null}
     </div>
   );
 }

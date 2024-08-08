@@ -4,3 +4,17 @@
   padding: 2rem;
   text-align: center;
 }
+
+#manage-history {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 20px;
+  left: 20px;
+  padding: 2em;
+  overflow: auto;
+}
+
+/* that is even the essence of todo */
+/* makes sense. */
+/* lolzzz. */
