@@ -1,5 +1,4 @@
 import "../css/Screen.css";
-import { useState } from "react";
 
 function History({ expr, answer }) {
   return (
@@ -15,7 +14,7 @@ function Screen({ history }) {
   return (
     <div id="screen">
       <div>
-        {history.reverse().map((h) => (
+        {history.map((h) => (
           <History expr={h.expr} answer={h.answer} key={h.expr} />
         ))}
       </div>
