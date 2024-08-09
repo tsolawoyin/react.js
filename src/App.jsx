@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Expression from "./Evaluator";
+import { evaluate } from "mathjs";
 import { v4 as uuidv4 } from "uuid";
 
 import Screen from "./components/Screen";
@@ -8,10 +8,6 @@ import Input from "./components/Input";
 import Header from "./components/Header";
 
 import "./css/App.css";
-
-function calculate(expr) {
-  return new Expression(expr);
-}
 
 function App() {
   let [value, setValue] = useState("");
@@ -24,14 +20,16 @@ function App() {
     if (e.key == "Enter" || e.keyCode === 13) {
       if (value) {
         try {
-          let exprObj = calculate(value);
-          let val = exprObj.value;
+          // so if user doesn't input something very odd, it should work.
+          let old = value;
+
+          let val = evaluate(old);
 
           setValue(String(val));
 
           let newHist = history.concat([
             {
-              expr: exprObj.exprString,
+              expr: old,
               answer: val,
               id: uuidv4(),
             },
@@ -40,9 +38,7 @@ function App() {
           setHistory(newHist);
           // set it to local storage... additional
           localStorage.setItem("history", JSON.stringify(newHist));
-        } catch (err) {
-          console.log("wrong");
-        }
+        } catch (_) {}
       }
     }
   }
@@ -64,7 +60,6 @@ function App() {
         setValue={setValue}
         history={history}
         setHistory={setHistory}
-        calculate={calculate}
       />
       {manageHistory ? (
         <Screen
@@ -75,9 +70,13 @@ function App() {
         />
       ) : null}
       <p className="is-size-7">
-        Made with <a href="https://react.dev/">react</a> and <a href="https://bulma.io/">bulma</a>.
-        <a href="https://github.com/tsolawoyin/react-projects/tree/calculator"> Github</a>.
-        <a href="https://github.com/tsolawoyin"> tsolawoyin</a>
+        Made with <a href="https://react.dev/">react</a> and{" "}
+        <a href="https://bulma.io/">bulma</a>.
+        <a href="https://github.com/tsolawoyin/react-projects/tree/calculator">
+          {" "}
+          Github
+        </a>
+        .<a href="https://github.com/tsolawoyin"> tsolawoyin</a>
       </p>
     </div>
   );

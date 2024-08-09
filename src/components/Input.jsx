@@ -8,7 +8,7 @@ function Input({value, setValue}) {
       id="input-field"
       onInput={e => setValue(e.target.value)}
       value={value}
-      placeholder="(3 + 4 ) / ( 3 + 6) * (7 - 5 ) * ( 2 * 2 ) + ( 1 + 1 )"
+      placeholder="running mathjs v13"
     />
   );
 }

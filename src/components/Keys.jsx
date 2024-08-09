@@ -1,4 +1,5 @@
 import "../css/Keys.css";
+import { evaluate } from "mathjs";
 import { v4 as uuidv4 } from "uuid";
 
 // Key ds...
@@ -10,27 +11,30 @@ let keys = [
   ["0", ".", "=", "+"],
 ];
 
-function Keys({ value, setValue, history, setHistory, calculate }) {
+function Keys({ value, setValue, history, setHistory}) {
   function handleClick(key, e) {
     if (key != "cancel" && key != "=") {
       setValue(value + key);
     } else if (key == "cancel") {
       setValue(value.slice(0, value.length - 1));
     } else if (key == "=") {
-      let val = calculate(value).value;
-      setValue(String(val));
+      try {
+        let old = value;
+        let val = evaluate(old);
+        setValue(String(val));
 
-      let newHist = history.concat([
-        {
-          expr: value,
-          answer: val,
-          id: uuidv4()
-        },
-      ]);
+        let newHist = history.concat([
+          {
+            expr: old,
+            answer: val,
+            id: uuidv4(),
+          },
+        ]);
 
-      setHistory(newHist);
-      // set it to local storage... additional
-      localStorage.setItem("history", JSON.stringify(newHist));
+        setHistory(newHist);
+        // set it to local storage... additional
+        localStorage.setItem("history", JSON.stringify(newHist));
+      } catch (_) {}
     }
   }
 
