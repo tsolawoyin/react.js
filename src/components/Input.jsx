@@ -8,7 +8,7 @@ function Input({value, setValue}) {
       id="input-field"
       onInput={e => setValue(e.target.value)}
       value={value}
-      placeholder="running mathjs v13"
+      placeholder="sin (30 deg)"
     />
   );
 }
