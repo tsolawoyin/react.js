@@ -15,6 +15,7 @@ function App() {
     JSON.parse(localStorage.getItem("history")) || []
   );
   let [manageHistory, setManageHistory] = useState(false);
+  let [valHist, setValHist] = useState([]); // always empty for new instances...
 
   function handleKeyDown(e) {
     if (e.key == "Enter" || e.keyCode === 13) {
@@ -26,6 +27,7 @@ function App() {
           let val = evaluate(old);
 
           setValue(String(val));
+          setValHist([...valHist].concat(String(val))); // hmmm. rough patch... just to make things work.
 
           let newHist = history.concat([
             {
@@ -45,9 +47,14 @@ function App() {
 
   return (
     <div onKeyDown={handleKeyDown}>
-      <Header />
+      <Header valHist={valHist} setValHist={setValHist} setValue={setValue} />
       <Screen history={history} id="screen" setValue={setValue} />
-      <Input value={value} setValue={setValue} />
+      <Input
+        value={value}
+        setValue={setValue}
+        valHist={valHist}
+        setValHist={setValHist}
+      />
       <p
         className="is-size-7"
         style={{ textAlign: "right", cursor: "pointer" }}
