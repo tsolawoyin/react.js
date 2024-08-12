@@ -48,7 +48,13 @@ function App() {
   return (
     <div onKeyDown={handleKeyDown}>
       <Header valHist={valHist} setValHist={setValHist} setValue={setValue} />
-      <Screen history={history} id="screen" setValue={setValue} />
+      <Screen
+        history={history}
+        id="screen"
+        setValue={setValue}
+        valHist={valHist}
+        setValHist={setValHist}
+      />
       <Input
         value={value}
         setValue={setValue}
@@ -67,6 +73,8 @@ function App() {
         setValue={setValue}
         history={history}
         setHistory={setHistory}
+        valHist={valHist}
+        setValHist={setValHist}
       />
       {manageHistory ? (
         <Screen

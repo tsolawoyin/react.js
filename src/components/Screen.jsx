@@ -1,8 +1,9 @@
 import "../css/Screen.css";
 
-function History({ expr, answer, setValue, id, from, history, setHistory }) {
+function History({ expr, answer, setValue, id, from, history, setHistory, valHist, setValHist }) {
   function handleClick(e) {
     setValue(e.target.textContent);
+    setValHist(valHist.concat(e.target.textContent));
   }
 
   function deleteHistory(e) {
@@ -44,7 +45,7 @@ function History({ expr, answer, setValue, id, from, history, setHistory }) {
   );
 }
 
-function Screen({ history, setHistory, setValue, id, setManageHistory }) {
+function Screen({ history, setHistory, setValue, id, setManageHistory, valHist, setValHist }) {
   // let it be like that for now jare...
   return (
     <div id={id} className={id == "manage-history" ? "box" : ""}>
@@ -64,6 +65,8 @@ function Screen({ history, setHistory, setValue, id, setManageHistory }) {
             from={id}
             history={history}
             setHistory={setHistory}
+            valHist={valHist}
+            setValHist={setValHist}
           />
         ))}
       </div>
