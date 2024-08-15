@@ -1,0 +1,26 @@
+#header {
+    display: flex;
+    gap: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-items: center;
+}
+
+#header button {
+    margin-left: auto;
+}
+
+header #tabs {
+    display: flex;
+    gap: 30px;
+}
+/* we will just have to work out the math needed and solve the problem. easy peasy */
+/* once the math is solved, easy peasy */
+
+#tabs li {
+    cursor: pointer;
+}
+
+.active {
+    border-bottom: 1px solid;
+    padding-bottom: 2px;
+}
