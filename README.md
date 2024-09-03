@@ -1,4 +1,4 @@
-# Web apps built with react.js
+# Web apps 
 
 - [Snicket Calculator](https://github.com/tsolawoyin/react-projects/tree/calculator)
 
